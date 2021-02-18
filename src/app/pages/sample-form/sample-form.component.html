@@ -1,0 +1,16 @@
+<div class="jumbotron">
+  <h1 class="text-center">Sample Form</h1>
+</div>
+<div class="container">
+  <form #sampleForm="ngForm" (ngSubmit)="submitForm()">
+    <div *ngFor="let structure of formStructure" class="mb-3 row">
+      <label [for]="structure.label.labelFor" class="col-sm-2 col-form-label">{{ structure.label.text }}</label>
+      <div class="col-sm-10">
+        <input type="text" [ngClass]="structure.field.cssClass" [id]="structure.field.id"
+          [placeholder]="structure.field.placeholder" [name]="structure.field.name"
+          [(ngModel)]="details[structure.field.name]" #{{structure.field.name}}="ngModel">
+      </div>
+    </div>
+    <input type="submit" class="btn btn-secondary">
+  </form>
+</div>
